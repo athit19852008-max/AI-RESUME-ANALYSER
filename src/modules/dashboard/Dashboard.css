@@ -1,0 +1,376 @@
+/* ==========================================================================
+   RESUMATE AI - MODULE 7: DASHBOARD & REPORT GENERATION STYLESHEET
+   Clean CSS3 adhering to design system:
+   Primary: #6366F1 | Secondary: #8B5CF6 | BG: #F8FAFC | Card: #FFFFFF | Text: #172033
+   ========================================================================== */
+
+.resumate-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   A. WELCOME SECTION
+   ========================================================================== */
+.dash-welcome-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-welcome-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+}
+
+.welcome-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.welcome-avatar-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+  font-weight: 700;
+  font-size: var(--font-lg);
+  flex-shrink: 0;
+}
+
+.welcome-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.welcome-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-heading {
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.welcome-desc {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  max-width: 620px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.welcome-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   B. OVERVIEW CARDS (4 KPI CARDS)
+   ========================================================================== */
+.dash-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kpi-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card:hover {
+  border-color: var(--color-primary-subtle);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.kpi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.kpi-title {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.kpi-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpi-icon-wrap.primary { background-color: var(--color-primary-light); color: var(--color-primary); }
+.kpi-icon-wrap.secondary { background-color: var(--color-secondary-light); color: var(--color-secondary); }
+.kpi-icon-wrap.success { background-color: var(--color-success-bg); color: var(--color-success); }
+.kpi-icon-wrap.warning { background-color: var(--color-warning-bg); color: var(--color-warning); }
+
+.kpi-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.kpi-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+}
+
+.kpi-value.primary { color: var(--color-primary); }
+.kpi-value.secondary { color: var(--color-secondary); }
+.kpi-value.success { color: var(--color-success); }
+.kpi-value.warning { color: var(--color-warning); }
+.kpi-value.muted { color: var(--color-text-muted); font-size: 1.5rem; }
+
+.kpi-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-xs);
+}
+
+/* ==========================================================================
+   C. RESUME OVERVIEW
+   ========================================================================== */
+.resume-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-top: 14px;
+}
+
+.resume-meta-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-meta-label {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.resume-meta-val {
+  font-size: var(--font-sm);
+  color: var(--color-text-main);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   D. RESUME ANALYSIS OVERVIEW & CIRCULAR METER
+   ========================================================================== */
+.score-circular-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.circular-gauge-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+}
+
+.circular-gauge-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.circular-gauge-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.circular-gauge-number {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.circular-gauge-label {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   E, F, G. SECTION LISTS & CARDS
+   ========================================================================== */
+.dash-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dash-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  line-height: 1.5;
+}
+
+.dash-list-item.success {
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-text-main);
+}
+
+.dash-list-item.danger {
+  background-color: var(--color-danger-bg);
+  border: 1px solid var(--color-danger-border);
+  color: var(--color-text-main);
+}
+
+.dash-list-item.neutral {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+}
+
+.dash-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Diff before/after card */
+.dash-diff-box {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dash-diff-before {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.dash-diff-after {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   REPORT GENERATOR MODAL / SECTION
+   ========================================================================== */
+.report-gen-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #EEF2FF 100%);
+  border: 1px solid var(--color-primary-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .dash-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dash-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-welcome-card {
+    padding: 18px;
+  }
+
+  .score-circular-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}

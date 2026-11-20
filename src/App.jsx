@@ -1,4 +1,4 @@
-
+```jsx
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ import LoginPage from './modules/auth/LoginPage';
 import RegisterPage from './modules/auth/RegisterPage';
 import ForgotPasswordPage from './modules/auth/ForgotPasswordPage';
 
-// Module 2: Resume Upload & Extraction
+// Module 2: Resume Upload
 import ResumeUploadPage from './modules/resume-upload/ResumeUploadPage';
 
 // Module 3: AI Resume Analysis
@@ -25,7 +25,7 @@ import JobMatchingPage from './modules/job-matching/JobMatchingPage';
 // Module 5: Skill Gap Analysis
 import SkillGapPage from './modules/skill-gap/SkillGapPage';
 
-// Module 6: Improvement Suggestions
+// Module 6: Resume Improvement
 import ResumeImprovementPage from './modules/resume-improvement/ResumeImprovementPage';
 
 // Module 7: Dashboard & Reports
@@ -34,14 +34,14 @@ import ReportsPage from './modules/dashboard-reports/ReportsPage';
 import LandingPage from './modules/dashboard-reports/LandingPage';
 
 /*
- * ============================================================================
- * DEVELOPMENT CONFIGURATION
- * ============================================================================
- *
- * true  = Run ONLY Module 3 – AI Resume Analysis
- * false = Run the complete multi-module application
- *
- */
+============================================================================
+DEVELOPMENT CONFIGURATION
+
+true  = Run ONLY Module 3 - AI Resume Analysis
+false = Run the complete application
+
+============================================================================
+*/
 
 const ISOLATE_MODULE_3 = true;
 
@@ -68,7 +68,9 @@ function App() {
 
             {/* Authentication */}
             <Route path="/login" element={<LoginPage />} />
+
             <Route path="/register" element={<RegisterPage />} />
+
             <Route
               path="/forgot-password"
               element={<ForgotPasswordPage />}
@@ -82,6 +84,7 @@ function App() {
                 </ProtectedRoute>
               }
             >
+
               {/* Module 7: Dashboard */}
               <Route
                 path="/dashboard"
@@ -123,9 +126,10 @@ function App() {
                 path="/reports"
                 element={<ReportsPage />}
               />
+
             </Route>
 
-            {/* Unknown Routes */}
+            {/* Fallback Route */}
             <Route
               path="*"
               element={<Navigate to="/" replace />}
@@ -139,3 +143,4 @@ function App() {
 }
 
 export default App;
+```

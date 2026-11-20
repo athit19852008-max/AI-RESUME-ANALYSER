@@ -1,0 +1,672 @@
+/* ==========================================================================
+   RESUMATE AI - DASHBOARD & REPORT GENERATION MODULE STYLES
+   Module 7: Dashboard, Visual Analytics, Report Preview & Print Styles
+   ========================================================================== */
+
+/* Active Analysis Session Banner */
+.analysis-session-card {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.analysis-session-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gradient-primary);
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.session-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.session-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.session-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 14px 18px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+
+.session-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.session-meta-label {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.session-meta-value {
+  font-size: var(--font-sm);
+  color: var(--color-text-main);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Pipeline Progress Stepper */
+.pipeline-progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pipeline-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+}
+
+.pipeline-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.pipeline-progress-bar-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-pill);
+  transition: width var(--transition-normal);
+}
+
+.pipeline-steps-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.pipeline-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.pipeline-chip.completed {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.pipeline-chip.pending {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+}
+
+.pipeline-chip:hover {
+  transform: translateY(-1px);
+}
+
+/* Scorecard Widgets */
+.score-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.score-card:hover {
+  border-color: var(--color-primary-subtle);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.score-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.score-card-title {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.score-card-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.score-card-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-text-main);
+  letter-spacing: -0.02em;
+}
+
+.score-card-number.primary { color: var(--color-primary); }
+.score-card-number.secondary { color: var(--color-secondary); }
+.score-card-number.success { color: var(--color-success); }
+.score-card-number.warning { color: var(--color-warning); }
+.score-card-number.muted { color: var(--color-text-muted); }
+
+.score-card-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.score-card-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-xs);
+}
+
+/* Mini Empty State inside Cards */
+.mini-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 12px;
+  background-color: var(--color-bg);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  margin-top: 8px;
+}
+
+.mini-empty-icon {
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.mini-empty-title {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 4px;
+}
+
+.mini-empty-desc {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  max-width: 240px;
+}
+
+/* Priority & Strengths Lists */
+.strengths-list,
+.priorities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.strength-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  color: var(--color-text-main);
+  line-height: 1.5;
+}
+
+.priority-item-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  line-height: 1.5;
+}
+
+.priority-item-card.high {
+  border-left: 3px solid var(--color-danger);
+}
+
+.priority-item-card.medium {
+  border-left: 3px solid var(--color-warning);
+}
+
+/* Skill Matrix Tags */
+.skill-tags-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-xs);
+  font-weight: 500;
+}
+
+.skill-tag-acquired {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.skill-tag-missing {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger-border);
+}
+
+.skill-tag-optional {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
+}
+
+.skill-tag-cert {
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary-hover);
+  border: 1px solid var(--color-secondary-subtle);
+}
+
+/* Bullet Rewrites Diff Cards */
+.bullet-diff-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet-diff-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bullet-label-before {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-danger);
+}
+
+.bullet-text-before {
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+  opacity: 0.85;
+}
+
+.bullet-label-after {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-success);
+}
+
+.bullet-text-after {
+  font-size: var(--font-xs);
+  color: var(--color-text-main);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Module Pipeline Cards */
+.module-nav-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.module-nav-card:hover {
+  border-color: var(--color-primary-subtle);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.module-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.module-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   REPORT PREVIEW & PRINT STYLES
+   ========================================================================== */
+
+/* Report Preview Document Container */
+.report-document-sheet {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 48px;
+  box-shadow: var(--shadow-md);
+  max-width: 960px;
+  margin: 0 auto 32px auto;
+  color: #0F172A;
+  font-family: var(--font-family-sans);
+}
+
+.report-doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--color-primary);
+  margin-bottom: 28px;
+}
+
+.report-doc-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.report-doc-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: -0.02em;
+}
+
+.report-doc-subtitle {
+  font-size: 13px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.report-doc-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #64748B;
+}
+
+.report-section {
+  margin-bottom: 28px;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.report-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #E2E8F0;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.report-kpi-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.report-kpi-box {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  text-align: center;
+}
+
+.report-kpi-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748B;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.report-kpi-val {
+  font-size: 28px;
+  font-weight: 800;
+  color: #4F46E5;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.report-table th,
+.report-table td {
+  padding: 10px 12px;
+  border: 1px solid #E2E8F0;
+  text-align: left;
+}
+
+.report-table th {
+  background-color: #F1F5F9;
+  font-weight: 600;
+  color: #1E293B;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Certified Footer Stamp */
+.report-certified-footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid #E2E8F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #94A3B8;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.certified-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1.5px solid #10B981;
+  border-radius: var(--radius-sm);
+  color: #059669;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+}
+
+.hide-on-screen {
+  display: none;
+}
+
+/* ==========================================================================
+   PRINT MEDIA QUERY (@media print)
+   Optimized for browser Print-to-PDF functionality
+   ========================================================================== */
+
+@media print {
+  .hide-on-screen {
+    display: block !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 14mm 14mm 14mm 14mm;
+  }
+
+  /* Hide navigation, sidebar, headers, dev guides, buttons, tabs */
+  .app-sidebar,
+  .app-navbar,
+  .sidebar-overlay,
+  .mobile-toggle-btn,
+  .page-header-actions,
+  .dev-guidance-card,
+  .no-print,
+  .resumate-btn,
+  button,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Reset layout containers for clean document flow */
+  html, body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root, .app-shell, .app-main, .page-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: transparent !important;
+  }
+
+  .report-document-sheet {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .resumate-card {
+    box-shadow: none !important;
+    border: 1px solid #CBD5E1 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .report-section {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 20px !important;
+  }
+
+  .report-kpi-box {
+    background-color: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .report-table th {
+    background-color: #F1F5F9 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .badge {
+    border: 1px solid #CBD5E1 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
