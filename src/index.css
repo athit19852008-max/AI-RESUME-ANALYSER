@@ -1,14 +1,56 @@
+
 /* ==========================================================================
-   RESUMATE AI - MASTER STYLESHEET ENTRY
+   RESUMATE AI - MASTER STYLESHEET
    ========================================================================== */
 
+/* 1. CSS Variables */
 @import './styles/variables.css';
+
+/* 2. Global Styles */
 @import './styles/global.css';
+
+/* 3. Layout Styles */
 @import './styles/layout.css';
+
+/* 4. Component Styles */
 @import './styles/components.css';
+
+/* 5. Dashboard & Reports */
 @import './styles/dashboard-reports.css';
+
+/* 6. Authentication */
 @import './styles/auth.css';
 
+/* ==========================================================================
+   ROOT APPLICATION STYLES
+   ========================================================================== */
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Box Sizing */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Body Styles */
+body {
+  min-height: 100vh;
+}
+
+/* React Root */
 #root {
   min-height: 100vh;
   display: flex;

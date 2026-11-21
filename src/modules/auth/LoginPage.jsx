@@ -20,6 +20,9 @@ const GoogleLogo = () => (
   </svg>
 );
 
+const DEFAULT_EMAIL = 'admin123@gmail.com';
+const DEFAULT_PASSWORD = '1234';
+
 export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,22 +45,40 @@ export const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (loading || googleLoading) return; // Prevent duplicate submissions
+    if (loading || googleLoading) return;
 
     setFormError('');
 
-    // Input Validation
-    const validation = validateLoginForm({ email, password });
-    if (!validation.isValid) {
-      setFormError(validation.error);
-      return;
+    const trimmedEmail = email.trim();
+    const isDefaultAdmin =
+      trimmedEmail === DEFAULT_EMAIL && password === DEFAULT_PASSWORD;
+
+    // Validate normally unless the user typed the default admin credentials
+    if (!isDefaultAdmin) {
+      const validation = validateLoginForm({ email: trimmedEmail, password });
+      if (!validation.isValid) {
+        setFormError(validation.error);
+        return;
+      }
     }
 
     try {
       setLoading(true);
-      await login(email.trim(), password, rememberMe);
+      await login(trimmedEmail, password, rememberMe);
       navigate(from, { replace: true });
     } catch (err) {
+      if (isDefaultAdmin && !isConfigured) {
+        localStorage.setItem(
+          'resumate_demo_user',
+          JSON.stringify({
+            uid: 'admin-default-001',
+            email: DEFAULT_EMAIL,
+            displayName: 'Admin',
+          })
+        );
+        navigate(from, { replace: true });
+        return;
+      }
       const friendlyMsg = getAuthErrorMessage(err.code);
       setFormError(friendlyMsg || err.message || 'Failed to sign in. Please verify your credentials.');
     } finally {
@@ -149,7 +170,7 @@ export const LoginPage = () => {
               label="Email Address"
               type="email"
               icon={Mail}
-              placeholder="developer@college.edu"
+              placeholder="admin123@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
@@ -160,7 +181,7 @@ export const LoginPage = () => {
             <PasswordInput
               id="login-password"
               label="Password"
-              placeholder="••••••••"
+              placeholder="••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"

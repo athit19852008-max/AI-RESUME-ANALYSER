@@ -1,6 +1,12 @@
-```jsx
+
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
 
 import { AuthProvider } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
@@ -34,20 +40,20 @@ import ReportsPage from './modules/dashboard-reports/ReportsPage';
 import LandingPage from './modules/dashboard-reports/LandingPage';
 
 /*
-============================================================================
+=========================================================
 DEVELOPMENT CONFIGURATION
 
 true  = Run ONLY Module 3 - AI Resume Analysis
-false = Run the complete application
+false = Run complete integrated application
 
-============================================================================
+=========================================================
 */
 
-const ISOLATE_MODULE_3 = true;
+const ISOLATE_MODULE_3 = false;
 
 function App() {
 
-  // Module 3 Standalone Development Mode
+  // Standalone AI Analysis Development Mode
   if (ISOLATE_MODULE_3) {
     return (
       <AppProvider>
@@ -56,20 +62,35 @@ function App() {
     );
   }
 
-  // Complete Integrated Application
+  // Complete Integrated Team Application
   return (
     <BrowserRouter>
       <AuthProvider>
         <AppProvider>
+
           <Routes>
 
             {/* Landing Page */}
-            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/"
+              element={<LandingPage />}
+            />
 
-            {/* Authentication */}
-            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/landing"
+              element={<LandingPage />}
+            />
 
-            <Route path="/register" element={<RegisterPage />} />
+            {/* Authentication Routes */}
+            <Route
+              path="/login"
+              element={<LoginPage />}
+            />
+
+            <Route
+              path="/register"
+              element={<RegisterPage />}
+            />
 
             <Route
               path="/forgot-password"
@@ -97,7 +118,7 @@ function App() {
                 element={<ResumeUploadPage />}
               />
 
-              {/* Module 3: AI Resume Analysis */}
+              {/* Module 3: AI Analysis */}
               <Route
                 path="/ai-analysis"
                 element={<AiAnalysisPage />}
@@ -136,6 +157,7 @@ function App() {
             />
 
           </Routes>
+
         </AppProvider>
       </AuthProvider>
     </BrowserRouter>
@@ -143,4 +165,3 @@ function App() {
 }
 
 export default App;
-```
